@@ -23,7 +23,7 @@ body{
     width: 100%;
     opacity: .6;
     z-index: 200000000000;
-    // display: none;
+    display: none;
 }
 .header{
     position: relative;
@@ -58,5 +58,95 @@ body{
     position: relative; top: 0; left: 0;
     width: 100%;
     min-height: calc(1024px - 5rem);
-    padding: 2.7rem 5rem;
+    padding: 3rem 5rem;
+
+    .search{
+        position: relative;top: 0; left: 0;
+        width: 100%;
+        height: 3.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .search_box{
+            position: relative; top: 0; left :0;
+            width: 30rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1.6rem;
+            background-color: hsl(209, 23%, 22%);
+            border-radius: .5rem;
+            .search_img{
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            .search_input{
+                margin-left: 1.3rem;
+                background-color: transparent;
+                outline: none;
+                border: none;
+                text-decoration: none;
+                color: white;
+                font-size: .9rem;
+
+                &::placeholder{
+                    color: white;
+                    font-size: .9rem;
+                }
+            }
+        }
+        .search_filter{
+            position: relative; top: 0; left :0;
+            width: 12.5rem;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 .6rem 0 1.5rem;
+            background-color: hsl(209, 23%, 22%);
+            border-radius: .5rem;
+            img{
+                width: 1.5rem;
+                height: 1.2rem;
+                transform: rotate(-180deg);
+                pointer-events: none;
+            }
+            p{
+                color: white;
+                font-size: .9rem;
+                pointer-events: none;
+            }
+        }
+        .filter_options{
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            margin-top: .4rem;
+            width: 12.5rem;
+            right: 0rem;top: 100%;
+            padding: .95rem 1.5rem;
+            border-radius: .5rem;
+            background-color: hsl(209, 23%, 22%);
+            div{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding-top: .55rem;
+                p{
+                    color:white;
+                }
+                img{
+                    visibility: hidden;
+                    width: .8rem;
+                    height: .8rem;
+                }
+            }
+            div:nth-child(1){
+                padding-top: 0;
+            }
+        }
+    }
 }

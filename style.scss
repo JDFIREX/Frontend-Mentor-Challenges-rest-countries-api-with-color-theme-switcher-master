@@ -125,27 +125,33 @@ body{
             margin-top: .4rem;
             width: 12.5rem;
             right: 0rem;top: 100%;
-            padding: .95rem 1.5rem;
             border-radius: .5rem;
             background-color: hsl(209, 23%, 22%);
             div{
                 width: 100%;
+                padding: 0rem 1.5rem;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
                 padding-top: .55rem;
+                opacity: 0;
                 p{
                     color:white;
+                    pointer-events: none;
                 }
                 img{
                     visibility: hidden;
                     width: .8rem;
                     height: .8rem;
+                    pointer-events: none;
                 }
             }
             div:nth-child(1){
-                padding-top: 0;
+                padding-top: .95rem;
+            }
+            div:nth-child(5){
+                padding-bottom: .95rem;
             }
         }
     }

@@ -1,5 +1,7 @@
+let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");
 searchDiv.classList.add("search");
+
 let inner = new Promise((resolve, reject) => {
     searchDiv.innerHTML = `
         <div class="search_box">
@@ -36,31 +38,70 @@ let inner = new Promise((resolve, reject) => {
     resolve(searchDiv)
     reject(searchDiv)
 
-}).then(r => {
+})
+inner.then(r => {
     document.querySelector(".search_filter").addEventListener('click',(e) => Options(e))
 }).catch(err => console.log(err))
 
-let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 
 function Options(e){
-    let element = e.path[0];
-    let dataOpen = element.dataset.open;
-    dataOpen == "false" ? openOptions(element) : closeOptions(element);
+    document.querySelector(".search_filter").dataset.open == "false" ? openOptions() : closeOptions();
 }
-function openOptions(element){
-    element.dataset.open = "true";
+
+function openOptions(){
+
+    document.querySelector(".search_filter").dataset.open = "true";
 
     gs.to('.filter_angle',.2,{
         rotate: "0deg"
+    }).to('.filter_options',0,{
+        visibility : "visible",
+        y: -20
+    }).to(".filter_options",.3,{
+        y: 0,
+        opacity: 1
     })
-}
-function closeOptions(element){
-    element.dataset.open = "false";
+    document.querySelectorAll('.fiter_option').forEach((f,b) => {
+        gs.to(f,0,{
+            y: 25 * b * -1,
+        }).to(f,.1,{
+            y: 0,
+            opacity : 1
+        })
+    })
     
+    window.addEventListener('click',clickOverSearch,true)
+}
+
+function clickOverSearch(event){
+
+    if(document.querySelector(".search_filter").dataset.open == "true"){
+        event.path[0] == document.querySelector('.search_filter') || event.path[1] == document.querySelector(".filter_options") ? null : closeOptions()
+    }
+
+}
+
+function closeOptions(){
+
+    document.querySelector(".search_filter").dataset.open = "false";
+
     gs.to('.filter_angle',.2,{
         rotate: "-180deg"
     })
+    document.querySelectorAll('.fiter_option').forEach((f,b) => {
+        gs.to(f,.1,{
+            opacity : 0
+        })
+    })
+    gs.to(".filter_options",.3,{
+        opacity: 0
+    }).to(".filter_options",0,{
+        visibility : "hidden",
+    })
+
+    window.removeEventListener('click',clickOverSearch,true)
 }
+
 
 
 export let div = searchDiv;

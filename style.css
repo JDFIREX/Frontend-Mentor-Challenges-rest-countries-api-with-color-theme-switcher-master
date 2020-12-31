@@ -211,13 +211,13 @@ body {
   width: 12.5rem;
   right: 0rem;
   top: 100%;
-  padding: .95rem 1.5rem;
   border-radius: .5rem;
   background-color: #2b3945;
 }
 
 .main .search .filter_options div {
   width: 100%;
+  padding: 0rem 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,19 +232,26 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-top: .55rem;
+  opacity: 0;
 }
 
 .main .search .filter_options div p {
   color: white;
+  pointer-events: none;
 }
 
 .main .search .filter_options div img {
   visibility: hidden;
   width: .8rem;
   height: .8rem;
+  pointer-events: none;
 }
 
 .main .search .filter_options div:nth-child(1) {
-  padding-top: 0;
+  padding-top: .95rem;
+}
+
+.main .search .filter_options div:nth-child(5) {
+  padding-bottom: .95rem;
 }
 /*# sourceMappingURL=style.css.map */

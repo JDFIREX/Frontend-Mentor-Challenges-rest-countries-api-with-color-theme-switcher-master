@@ -1,3 +1,13 @@
+import * as Countries from "./countriesList.js"
+
+// setTimeout(() => {
+//     let newList = Countries.countriesList.filter(c => {
+//         return c.region == "Europe"
+//     })
+//     Countries.createCountryList(newList)
+// }, 10000);
+
+
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");
 searchDiv.classList.add("search");
@@ -13,23 +23,23 @@ let inner = new Promise((resolve, reject) => {
             <img src="./../../images/angle-down-solid.svg" class="filter_angle" alt="filter">
         </div>
         <div class="filter_options">
-            <div class="fiter_option" data-selected="false" >
+            <div class="fiter_option" data-selected="false" data-region="Africa">
                 <p class="option_p">Africa</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
-            <div class="fiter_option" data-selected="false" >
+            <div class="fiter_option" data-selected="false" data-region="America">
                 <p class="option_p">America</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
-            <div class="fiter_option" data-selected="false" >
+            <div class="fiter_option" data-selected="false" data-region="Asia">
                 <p class="option_p">Asia</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
-            <div class="fiter_option" data-selected="false" >
+            <div class="fiter_option" data-selected="false" data-region="Europe">
                 <p class="option_p">Europe</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
-            <div class="fiter_option" data-selected="false" >
+            <div class="fiter_option" data-selected="false" data-region="Oceania">
                 <p class="option_p">Oceania</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>

@@ -10,6 +10,7 @@ import * as Countries from "./countriesList.js"
 
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");
+let Filters = []
 searchDiv.classList.add("search");
 
 let inner = new Promise((resolve, reject) => {
@@ -19,7 +20,7 @@ let inner = new Promise((resolve, reject) => {
             <input type="text" class="search_input" name="search_input" id="search_input" placeholder="Search for a country..." >
         </div>
         <div class="search_filter" data-open="false">
-            <p>Filter by Region</p>
+            <p class="filter_p">Filter by Region</p>
             <img src="./../../images/angle-down-solid.svg" class="filter_angle" alt="filter">
         </div>
         <div class="filter_options">
@@ -27,8 +28,8 @@ let inner = new Promise((resolve, reject) => {
                 <p class="option_p">Africa</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
-            <div class="fiter_option" data-selected="false" data-region="America">
-                <p class="option_p">America</p>
+            <div class="fiter_option" data-selected="false" data-region="Americas">
+                <p class="option_p">Americas</p>
                 <img src="./../../images/check-solid.svg" alt="check" class="option_check" >
             </div>
             <div class="fiter_option" data-selected="false" data-region="Asia">
@@ -51,6 +52,7 @@ let inner = new Promise((resolve, reject) => {
 })
 inner.then(r => {
     document.querySelector(".search_filter").addEventListener('click',(e) => Options(e))
+    document.querySelectorAll(".fiter_option").forEach(f => f.addEventListener("click",(e) => setFiltr(e)))
 }).catch(err => console.log(err))
 
 
@@ -110,6 +112,27 @@ function closeOptions(){
     })
 
     window.removeEventListener('click',clickOverSearch,true)
+}
+
+let filters = []
+
+
+function setFiltr(e){
+    e.path[0].dataset.selected == "false" ? e.path[0].dataset.selected = "true" : e.path[0].dataset.selected = "false";
+    filters = [];
+    for(let i = 0 ; i < document.querySelector(".filter_options").childElementCount; i++){
+        if(document.querySelector(".filter_options").children[i].dataset.selected == "true"){
+            filters.push(document.querySelector(".filter_options").children[i].dataset.region)
+        }
+    }
+    if(filters.length == 0 || filters.length == 5){
+        Countries.createCountryList(Countries.countriesList)
+    }else{
+        let newList = Countries.countriesList.filter(c => {
+            return filters.includes(c.region) ? c : 0;
+        })
+        Countries.createCountryList(newList)
+    }
 }
 
 

@@ -58,17 +58,19 @@ body{
     position: relative; top: 0; left: 0;
     width: 100%;
     min-height: calc(1024px - 5rem);
-    padding: 3rem 5rem;
+    padding: 3rem 0rem;
     background-color: hsl(207, 26%, 17%);
 
     .search{
         position: relative;top: 0; left: 0;
         width: 100%;
         height: 3.5rem;
+        padding: 0rem 5rem;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        z-index: 2000000000;
         .search_box{
             position: relative; top: 0; left :0;
             width: 30rem;
@@ -77,6 +79,7 @@ body{
             align-items: center;
             padding: 0 1.6rem;
             background-color: hsl(209, 23%, 22%);
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
             border-radius: .5rem;
             .search_img{
                 width: 1.5rem;
@@ -91,9 +94,20 @@ body{
                 width: 100%;
                 color: white;
                 font-size: .9rem;
+                
+                
                 &::placeholder{
                     color: white;
                     font-size: .9rem;
+                }
+            }
+        }
+        .search_box_white{
+            background-color: hsl(0, 0%, 100%);
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            .search_input{
+                &::placeholder{
+                    color: hsl(0, 0%, 52%);
                 }
             }
         }
@@ -107,6 +121,7 @@ body{
             padding: 0 .6rem 0 1.5rem;
             background-color: hsl(209, 23%, 22%);
             border-radius: .5rem;
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
             img{
                 width: 1.5rem;
                 height: 1.2rem;
@@ -114,6 +129,7 @@ body{
                 pointer-events: none;
             }
             p{
+                font-weight: 600;
                 color: white;
                 font-size: .9rem;
                 pointer-events: none;
@@ -125,9 +141,10 @@ body{
             position: absolute;
             margin-top: .4rem;
             width: 12.5rem;
-            right: 0rem;top: 100%;
+            right: 5rem;top: 100%;
             border-radius: .5rem;
             background-color: hsl(209, 23%, 22%);
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
             div{
                 width: 100%;
                 padding: 0rem 1.5rem;
@@ -154,7 +171,14 @@ body{
             div:nth-child(5){
                 padding-bottom: .95rem;
             }
+            div[data-selected="true"]{
+                img{
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
         }
+        
     }
     .sliderDot{
         height: 3rem;
@@ -162,30 +186,71 @@ body{
         display: flex;
         align-items: center;
         justify-content: center;
-
+        transition: all .3s ease-in-out;
         .dot{
             width: .5rem;
             height: .5rem;
             border-radius: 9in;
             background-color: white;
             margin: 0 .3rem;
+            box-shadow: 0px 0px 5px 0px hsl(207, 26%, 17%);
         }
         .dot[data-visible="true"]{
             background-color: orange;
         }
     }
+    .left-arrow{
+        position: absolute;
+        top: calc((100% / 2) + 1rem); left: 0;
+        width: 5rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 200000;
+        .left_arrow_img{
+            width: 3rem;
+            padding: 0.5rem;
+            height: 5rem;
+            border-radius: .5rem;
+            border: 1px solid white;
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+        }
+    }
+    .right-arrow{
+        position: absolute;
+        top: calc((100% / 2) + 1rem);; right: 0;
+        width: 5rem;
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 200000;
+        .right_arrow_img{
+            width: 3rem;
+            padding: 0.5rem;
+            height: 5rem;
+            border-radius: .5rem;
+            border: 1px solid white;
+            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+        }
+    }
     .countries{
         position: relative; top: 0; left: 0;
-        width: 100%;
+        width: 100vw;
         overflow-x: hidden;
 
         .country_page{
-            position: relative; top: 0; left: 0;
-            width: 100%;
+            position: relative; top: 0; left: 5rem;
+            width: calc(100vw - 10rem);
             display: grid;
-            grid-column-gap: 4.6rem;
             grid-row-gap: 4.6rem;
-            grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+            grid-column-gap: 1.5rem;
+            justify-content: space-between;
+            grid-template-columns: repeat(4, 16.5rem);
+            // grid-template-columns: repeat(auto-fill, 16.5rem);
+            transition: all .3 ease-in-out;
+            padding-bottom: .5rem;
     
             .country{
                 width: 16.5rem;
@@ -193,7 +258,10 @@ body{
                 border-radius: .5rem;
                 background-color: hsl(209, 23%, 22%);
                 overflow-x: hidden;
+                transition: all .3 ease-in-out;
+                box-shadow: 0px 0px 15px -5px hsl(207, 26%, 17%);
                 .country_img_box{
+                    position: relative; top: 0;left: 0;
                     width: 100%;
                     height: 10rem;
                     overflow: hidden;
@@ -205,7 +273,7 @@ body{
                     background-size: cover;
                 }
                 .country_info{
-                    padding: 1rem .5rem 0rem 1.25rem;
+                    padding: 1.4rem .5rem 0rem 1.35rem;
     
                     h1{
                         font-size: 1.3rem;
@@ -216,7 +284,7 @@ body{
                     p{
                         font-size: 1rem;
                         font-weight: 600;
-                        margin-bottom: .25rem;
+                        margin-bottom: .2rem;
                         color: white;
                         span{
                             font-size: .9rem;

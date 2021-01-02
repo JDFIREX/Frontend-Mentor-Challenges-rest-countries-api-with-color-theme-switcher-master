@@ -1,12 +1,19 @@
 let countriesDiv = document.createElement("div");
 countriesDiv.classList.add("countries");
 
+// create element
 let sliderDotDiv = document.createElement("div");
 sliderDotDiv.classList.add("sliderDot")
 
+let leftArrowSilder = document.createElement("div");
+leftArrowSilder.classList.add("left-arrow");
+
+let rightArrowSilder = document.createElement("div");
+rightArrowSilder.classList.add("right-arrow");
+
 export let countriesList = []
 let sliderPosition = 0;
-
+//  create list 
 axios.get('https://restcountries.eu/rest/v2/all')
 .then(function (response) {
     response.data.map(a => {
@@ -59,6 +66,7 @@ console.log(error);
 })
 
 export function createCountryList(List){
+    sliderPosition = 0;
     countriesDiv.innerHTML = "";
     sliderDotDiv.innerHTML = "";
 
@@ -107,11 +115,49 @@ export function createCountryList(List){
         sliderDotDiv.appendChild(t)
 
     }
+
+
+}
+
+// left arrow
+
+leftArrowSilder.innerHTML = `
+<img src="./../../images/angle-left-solid.svg" alt="left arrow" class="left_arrow_img" >
+`
+leftArrowSilder.addEventListener("click",(e) => leftPage(e))
+
+function leftPage(){
+    sliderPosition--;
+    sliderPosition < 0 ? sliderPosition = document.querySelector(".countries").childElementCount - 1 : sliderPosition = sliderPosition;
+    document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+    document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+    document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+    document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+}
+
+// right arrow
+rightArrowSilder.innerHTML = `
+    <img src="./../../images/angle-right-solid.svg" alt="right arrow" class="right_arrow_img">
+`
+rightArrowSilder.addEventListener("click",(e) => rightPage(e))
+
+function rightPage(e){
+    sliderPosition++;
+    sliderPosition >= document.querySelector(".countries").childElementCount ? sliderPosition = 0 : sliderPosition = sliderPosition;
+    document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+    document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+    document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+    document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
 }
 
 
+//  export 
 export let div = countriesDiv;
 export let sliderDot = sliderDotDiv;
+export let leftArrow = leftArrowSilder;
+export let rightArrow = rightArrowSilder;
+
+
 
 // name
 // nativeName

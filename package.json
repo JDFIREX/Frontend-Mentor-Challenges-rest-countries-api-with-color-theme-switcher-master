@@ -1,0 +1,25 @@
+{
+  "name": "frontend-mentor-challenges-rest-countries-api-with-color-theme-switcher-master",
+  "version": "1.0.0",
+  "description": "The challenge - rest-countries-api-with-color-theme-switcher-master (https://www.frontendmentor.io)",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDFIREX/Frontend-Mentor-Challenges-rest-countries-api-with-color-theme-switcher-master.git"
+  },
+  "author": "JDFIREX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JDFIREX/Frontend-Mentor-Challenges-rest-countries-api-with-color-theme-switcher-master/issues"
+  },
+  "homepage": "https://github.com/JDFIREX/Frontend-Mentor-Challenges-rest-countries-api-with-color-theme-switcher-master#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "gsap": "^3.5.1"
+  },
+  "devDependencies": {}
+}

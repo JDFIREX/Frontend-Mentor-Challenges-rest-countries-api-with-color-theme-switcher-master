@@ -1,3 +1,5 @@
+import gsap from "./../../node_modules/gsap/all.js"
+
 let countriesDiv = document.createElement("div");
 countriesDiv.classList.add("countries");
 
@@ -14,9 +16,11 @@ rightArrowSilder.classList.add("right-arrow");
 export let countriesList = []
 let sliderPosition = 0;
 //  create list 
-axios.get('https://restcountries.eu/rest/v2/all')
+fetch('https://restcountries.eu/rest/v2/all')
+.then(r => r.json())
 .then(function (response) {
-    response.data.map(a => {
+    response.map(a => {
+        a.name == "Åland Islands" ? a.name = "Aland Islands" : a.name = a.name;
         let t = {
             name : a.name,
             nativeName : a.nativeName,
@@ -37,7 +41,6 @@ axios.get('https://restcountries.eu/rest/v2/all')
 .catch(function (error) {
 console.log(error);
 }).then(r => {
-
     countriesList.map(a => {
         let t = a.population;
         t = t.toString().split("").reverse();
@@ -125,14 +128,41 @@ leftArrowSilder.innerHTML = `
 <img src="./../../images/angle-left-solid.svg" alt="left arrow" class="left_arrow_img" >
 `
 leftArrowSilder.addEventListener("click",(e) => leftPage(e))
+let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
+
 
 function leftPage(){
     sliderPosition--;
     sliderPosition < 0 ? sliderPosition = document.querySelector(".countries").childElementCount - 1 : sliderPosition = sliderPosition;
-    document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-    document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-    document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
-    document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+
+    document.querySelector(".countries").childNodes.forEach(c => {
+        if(c.dataset.visible == "true"){
+            gs.to(c,.3,{
+                x : -200,
+                opacity: 0,
+            })
+            gs.to(c,0,{
+                delay: .1,
+                x: 0
+            })
+        }
+    })
+    setTimeout(() => {
+        document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+        document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+        document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+        document.querySelector(".countries").children[sliderPosition].style.opacity = "0"
+        document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+        setTimeout(() => {
+            gs.to(document.querySelector(".countries").children[sliderPosition],0,{
+                x : 400,
+                opacity : 0,
+            }).to(document.querySelector(".countries").children[sliderPosition],.4,{
+                x : 0,
+                opacity: 1
+            })
+        }, 50);
+    }, 300);
 }
 
 // right arrow
@@ -144,10 +174,34 @@ rightArrowSilder.addEventListener("click",(e) => rightPage(e))
 function rightPage(e){
     sliderPosition++;
     sliderPosition >= document.querySelector(".countries").childElementCount ? sliderPosition = 0 : sliderPosition = sliderPosition;
-    document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-    document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-    document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
-    document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+    document.querySelector(".countries").childNodes.forEach(c => {
+        if(c.dataset.visible == "true"){
+            gs.to(c,.3,{
+                x : 600,
+                opacity: 0,
+            })
+            gs.to(c,0,{
+                delay: .1,
+                x: 0
+            })
+        }
+    })
+    setTimeout(() => {
+        document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+        document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+        document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+        document.querySelector(".countries").children[sliderPosition].style.opacity = "0"
+        document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+        setTimeout(() => {
+            gs.to(document.querySelector(".countries").children[sliderPosition],0,{
+                x : -400,
+                opacity : 0,
+            }).to(document.querySelector(".countries").children[sliderPosition],.4,{
+                x : 0,
+                opacity: 1
+            })
+        }, 50);
+    }, 300);
 }
 
 

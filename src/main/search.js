@@ -1,4 +1,5 @@
 import * as Countries from "./countriesList.js"
+import gsap from "./../../node_modules/gsap/all.js"
 
 // setTimeout(() => {
 //     let newList = Countries.countriesList.filter(c => {
@@ -10,7 +11,6 @@ import * as Countries from "./countriesList.js"
 
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");
-let Filters = []
 searchDiv.classList.add("search");
 
 let inner = new Promise((resolve, reject) => {
@@ -53,6 +53,7 @@ let inner = new Promise((resolve, reject) => {
 inner.then(r => {
     document.querySelector(".search_filter").addEventListener('click',(e) => Options(e))
     document.querySelectorAll(".fiter_option").forEach(f => f.addEventListener("click",(e) => setFiltr(e)))
+    document.querySelector(".search_input").addEventListener("keyup",(e) => Searching(e))
 }).catch(err => console.log(err))
 
 
@@ -126,15 +127,46 @@ function setFiltr(e){
         }
     }
     if(filters.length == 0 || filters.length == 5){
-        Countries.createCountryList(Countries.countriesList)
+        gs.to(".countries",.5,{
+            clipPath : "inset(0 50% 0 50%)",
+            opacity : 0
+        })
+        setTimeout(() => {
+            Countries.createCountryList(newList)
+        }, 400);
+        setTimeout(() => {
+            gs.to('.countries',.3,{
+                clipPath : "inset(0% 0% 0% 0%)",
+                opacity : 1
+            })
+        }, 800);
     }else{
         let newList = Countries.countriesList.filter(c => {
             return filters.includes(c.region) ? c : 0;
         })
-        Countries.createCountryList(newList)
+        gs.to(".countries",.5,{
+            clipPath : "inset(0 50% 0 50%)",
+            opacity : 0
+        })
+        setTimeout(() => {
+            Countries.createCountryList(newList)
+        }, 400);
+        setTimeout(() => {
+            gs.to('.countries',.3,{
+                clipPath : "inset(0% 0% 0% 0%)",
+                opacity : 1
+            })
+        }, 800);
     }
 }
 
-
+function Searching(e){
+    let input = e.path[0].value.toLowerCase();
+    let reg = new RegExp('^' + input)
+    let newList = Countries.countriesList.filter(c => {
+       return c.name,reg.test(c.name.toLowerCase()) ? c : null;
+    })
+    Countries.createCountryList(newList)
+}
 
 export let div = searchDiv;

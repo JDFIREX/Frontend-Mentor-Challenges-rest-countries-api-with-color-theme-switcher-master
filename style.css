@@ -33,6 +33,8 @@ body {
   height: auto;
   font-size: 14px;
   overflow-x: hidden;
+  -webkit-transition: all .3 ease-in-out;
+  transition: all .3 ease-in-out;
 }
 
 .design {
@@ -63,8 +65,9 @@ body {
           align-items: center;
   padding: 0 5rem;
   background-color: #2b3945;
-  -webkit-box-shadow: 0px 1px 35px 5px #202c37;
-          box-shadow: 0px 1px 35px 5px #202c37;
+  -webkit-box-shadow: 0px 3px 10px -5px black;
+          box-shadow: 0px 3px 10px -5px black;
+  z-index: 2000;
 }
 
 .header h1 {
@@ -134,8 +137,8 @@ body {
           align-items: center;
   padding: 0 1.6rem;
   background-color: #2b3945;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
   border-radius: .5rem;
 }
 
@@ -153,6 +156,7 @@ body {
   width: 100%;
   color: white;
   font-size: .9rem;
+  z-index: 200000;
 }
 
 .main .search .search_box .search_input::-webkit-input-placeholder {
@@ -177,8 +181,12 @@ body {
 
 .main .search .search_box_white {
   background-color: white;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
+}
+
+.main .search .search_box_white .search_input {
+  color: #111517;
 }
 
 .main .search .search_box_white .search_input::-webkit-input-placeholder {
@@ -215,8 +223,9 @@ body {
   padding: 0 .6rem 0 1.5rem;
   background-color: #2b3945;
   border-radius: .5rem;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
+  z-index: 20000;
 }
 
 .main .search .search_filter img {
@@ -244,8 +253,8 @@ body {
   top: 100%;
   border-radius: .5rem;
   background-color: #2b3945;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
 }
 
 .main .search .filter_options div {
@@ -315,8 +324,8 @@ body {
   border-radius: 9in;
   background-color: white;
   margin: 0 .3rem;
-  -webkit-box-shadow: 0px 0px 5px 0px #202c37;
-          box-shadow: 0px 0px 5px 0px #202c37;
+  -webkit-box-shadow: 0px 0px 5px 0px black;
+          box-shadow: 0px 0px 5px 0px black;
 }
 
 .main .sliderDot .dot[data-visible="true"] {
@@ -347,8 +356,8 @@ body {
   height: 5rem;
   border-radius: .5rem;
   border: 1px solid white;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
 }
 
 .main .right-arrow {
@@ -375,8 +384,8 @@ body {
   height: 5rem;
   border-radius: .5rem;
   border: 1px solid white;
-  -webkit-box-shadow: 0px 0px 10px -5px #202c37;
-          box-shadow: 0px 0px 10px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 10px -5px black;
+          box-shadow: 0px 0px 10px -5px black;
 }
 
 .main .countries {
@@ -399,7 +408,6 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-grid-columns: (16.5rem)[4];
       grid-template-columns: repeat(4, 16.5rem);
   -webkit-transition: all .3 ease-in-out;
   transition: all .3 ease-in-out;
@@ -414,8 +422,8 @@ body {
   overflow-x: hidden;
   -webkit-transition: all .3 ease-in-out;
   transition: all .3 ease-in-out;
-  -webkit-box-shadow: 0px 0px 15px -5px #202c37;
-          box-shadow: 0px 0px 15px -5px #202c37;
+  -webkit-box-shadow: 0px 0px 15px -5px black;
+          box-shadow: 0px 0px 15px -5px black;
 }
 
 .main .countries .country_page .country .country_img_box {
@@ -441,6 +449,7 @@ body {
 
 .main .countries .country_page .country .country_info {
   padding: 1.4rem .5rem 0rem 1.35rem;
+  margin-bottom: 2rem;
 }
 
 .main .countries .country_page .country .country_info h1 {

@@ -16,6 +16,7 @@ body{
     height: auto;
     font-size: 14px;
     overflow-x: hidden;
+    transition: all .3 ease-in-out;
 }
 .design{
     position: absolute;
@@ -35,7 +36,8 @@ body{
     align-items: center;
     padding: 0 5rem;
     background-color:hsl(209, 23%, 22%) ;
-    box-shadow: 0px 1px 35px 5px hsl(207, 26%, 17%);
+    box-shadow: 0px 3px 10px -5px black;
+    z-index: 2000;
     h1{
         font-size: 1.5rem;
         font-weight: 800;
@@ -79,7 +81,7 @@ body{
             align-items: center;
             padding: 0 1.6rem;
             background-color: hsl(209, 23%, 22%);
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
             border-radius: .5rem;
             .search_img{
                 width: 1.5rem;
@@ -94,7 +96,7 @@ body{
                 width: 100%;
                 color: white;
                 font-size: .9rem;
-                
+                z-index: 200000;
                 
                 &::placeholder{
                     color: white;
@@ -104,8 +106,9 @@ body{
         }
         .search_box_white{
             background-color: hsl(0, 0%, 100%);
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
             .search_input{
+                color : hsl(200, 15%, 8%);
                 &::placeholder{
                     color: hsl(0, 0%, 52%);
                 }
@@ -121,7 +124,8 @@ body{
             padding: 0 .6rem 0 1.5rem;
             background-color: hsl(209, 23%, 22%);
             border-radius: .5rem;
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
+            z-index: 20000;
             img{
                 width: 1.5rem;
                 height: 1.2rem;
@@ -144,7 +148,7 @@ body{
             right: 5rem;top: 100%;
             border-radius: .5rem;
             background-color: hsl(209, 23%, 22%);
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
             div{
                 width: 100%;
                 padding: 0rem 1.5rem;
@@ -193,7 +197,7 @@ body{
             border-radius: 9in;
             background-color: white;
             margin: 0 .3rem;
-            box-shadow: 0px 0px 5px 0px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 5px 0px black;
         }
         .dot[data-visible="true"]{
             background-color: orange;
@@ -214,7 +218,7 @@ body{
             height: 5rem;
             border-radius: .5rem;
             border: 1px solid white;
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
         }
     }
     .right-arrow{
@@ -232,7 +236,7 @@ body{
             height: 5rem;
             border-radius: .5rem;
             border: 1px solid white;
-            box-shadow: 0px 0px 10px -5px hsl(207, 26%, 17%);
+            box-shadow: 0px 0px 10px -5px black;
         }
     }
     .countries{
@@ -259,7 +263,7 @@ body{
                 background-color: hsl(209, 23%, 22%);
                 overflow-x: hidden;
                 transition: all .3 ease-in-out;
-                box-shadow: 0px 0px 15px -5px hsl(207, 26%, 17%);
+                box-shadow: 0px 0px 15px -5px black;
                 .country_img_box{
                     position: relative; top: 0;left: 0;
                     width: 100%;
@@ -274,7 +278,7 @@ body{
                 }
                 .country_info{
                     padding: 1.4rem .5rem 0rem 1.35rem;
-    
+                    margin-bottom: 2rem;
                     h1{
                         font-size: 1.3rem;
                         color: white;

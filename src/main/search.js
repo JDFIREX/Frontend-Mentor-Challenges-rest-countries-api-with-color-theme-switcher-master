@@ -1,6 +1,6 @@
 import * as Countries from "./countriesList.js"
 import gsap from "./../../node_modules/gsap/all.js"
-import { gsap } from "gsap"
+// import { gsap } from "gsap"
 
 // setTimeout(() => {
 //     let newList = Countries.countriesList.filter(c => {

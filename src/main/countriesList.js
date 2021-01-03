@@ -1,5 +1,5 @@
 import gsap from "./../../node_modules/gsap/all.js"
-import { gsap } from "gsap"
+// import { gsap } from "gsap"
 
 let countriesDiv = document.createElement("div");
 countriesDiv.classList.add("countries");

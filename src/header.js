@@ -26,6 +26,7 @@ function Mode(e){
     darkMode = !darkMode;
 }
 function WhiteMode(){
+    document.querySelector(".body").style.backgroundColor = "hsl(207, 26%, 17%)"
     document.querySelector(".main").style.backgroundColor = "hsl(0, 0%, 98%)"
     document.querySelectorAll(".country").forEach(e => {e.style.backgroundColor = "hsl(0, 0%, 100%)"});
     document.querySelectorAll(".country_name").forEach(f => f.style.color = "hsl(200, 15%, 8%)")
@@ -48,6 +49,7 @@ function WhiteMode(){
     document.querySelector(".header_h").style.color = "hsl(200, 15%, 8%)"
 }
 function DarkMode(e){
+    document.querySelector(".body").style.backgroundColor = "hsl(207, 26%, 17%)"
     document.querySelector(".main").style.backgroundColor = "hsl(207, 26%, 17%)"
     document.querySelector(".search_box").classList.remove("search_box_white")
     document.querySelectorAll(".country").forEach(e => {e.style.backgroundColor = "hsl(209, 23%, 22%)"});

@@ -1,5 +1,5 @@
-import * as Header from './src/header.js';
-import * as Main from './src/main.js';
+import * as Header from './header.js';
+import * as Main from './main.js';
 
 
 const body = document.querySelector(".body");

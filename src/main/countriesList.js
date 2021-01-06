@@ -1,5 +1,5 @@
 import gsap from "./../../node_modules/gsap/all.js"
-// import { gsap } from "gsap"
+import * as detail from "./detail.js"
 
 let countriesDiv = document.createElement("div");
 countriesDiv.classList.add("countries");
@@ -20,9 +20,10 @@ let sliderPosition = 0;
 fetch('https://restcountries.eu/rest/v2/all')
 .then(r => r.json())
 .then(function (response) {
-    response.map(a => {
+    response.map((a,b) => {
         a.name == "Åland Islands" ? a.name = "Aland Islands" : a.name = a.name;
         let t = {
+            alpha3code : a.alpha3Code,
             name : a.name,
             nativeName : a.nativeName,
             population : a.population,
@@ -33,7 +34,8 @@ fetch('https://restcountries.eu/rest/v2/all')
             topLevelDomain : a.topLevelDomain[0],
             currencies :  a.currencies[0].name,
             languages : a.languages,
-            flag : a.flag
+            flag : a.flag,
+            index : b
         }
         countriesList.push(t)
     })
@@ -89,7 +91,7 @@ export function createCountryList(List){
             if(List[i]){
                 let t = document.createElement('div');
                 t.classList.add("country");
-                t.dataset.index = i;
+                t.dataset.index = List[i].index;
                 t.dataset.name = List[i].name;
                 t.innerHTML = `
                     <div class="country_img_box" style="background-image: url('${List[i].flag}');">
@@ -119,7 +121,9 @@ export function createCountryList(List){
         sliderDotDiv.appendChild(t)
 
     }
-
+    document.querySelectorAll(".country").forEach(c => {
+        c.addEventListener("click", (e) => detail.details(Number(e.path[0].dataset.index)))
+    })
 
 }
 
@@ -139,7 +143,7 @@ function leftPage(){
     document.querySelector(".countries").childNodes.forEach(c => {
         if(c.dataset.visible == "true"){
             gs.to(c,.3,{
-                x : -200,
+                x : 600,
                 opacity: 0,
             })
             gs.to(c,0,{
@@ -156,7 +160,7 @@ function leftPage(){
         document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
         setTimeout(() => {
             gs.to(document.querySelector(".countries").children[sliderPosition],0,{
-                x : 400,
+                x : -400,
                 opacity : 0,
             }).to(document.querySelector(".countries").children[sliderPosition],.4,{
                 x : 0,
@@ -178,7 +182,7 @@ function rightPage(e){
     document.querySelector(".countries").childNodes.forEach(c => {
         if(c.dataset.visible == "true"){
             gs.to(c,.3,{
-                x : 600,
+                x : -400,
                 opacity: 0,
             })
             gs.to(c,0,{
@@ -195,7 +199,7 @@ function rightPage(e){
         document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
         setTimeout(() => {
             gs.to(document.querySelector(".countries").children[sliderPosition],0,{
-                x : -400,
+                x : 600,
                 opacity : 0,
             }).to(document.querySelector(".countries").children[sliderPosition],.4,{
                 x : 0,

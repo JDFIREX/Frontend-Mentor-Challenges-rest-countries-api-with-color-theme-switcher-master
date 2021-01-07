@@ -433,7 +433,7 @@ body{
         @include position(absolute,0,0);
         @include display(flex,column,flex-start,flex-start);
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         z-index: 2000000000;
         background-color: hsl(207, 26%, 17%);
         padding: 5rem;
@@ -459,21 +459,25 @@ body{
             }
         }
         .details{
-            margin-top: 5rem;
+            margin-top: 7.5rem;
             @include display(flex,row,flex-start,flex-start);
             width: 100%;
             height: auto;
             .d_img{
-                width: 38rem;
+                position: absolute;
+                width: 35rem;
                 height: 25rem;
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
             }
             .d_info{
-                width: 40rem;
+                position: absolute;
+                right: 5rem;
+                border:1px solid red;
+                width: 36rem;
                 margin-left: 9rem;
-                margin-top: 2.3rem;
+                margin-top: 2.5rem;
                 h1{
                     @include font(2rem,800, white);
                 }
@@ -491,19 +495,19 @@ body{
                     }
                 }
                 .info_f{
-                    margin-top: 4rem;
+                    margin-top: 4.5rem;
                     @include display(flex,row,flex-start,flex-start);
                     .i_border{
-                        width: 9rem;
+                        width: 10rem;
                         @include font(1rem,600, white);
                     }
                     .borders{
                         flex-wrap: wrap;
-                        margin-left: 1.2rem;
+                        margin-left: .5rem;
                         @include display(flex,row,flex-start,flex-start);
                         p{
                             @include font(.8rem,300, white);
-                            padding:0.25rem 1.8rem;
+                            padding:0.25rem 2rem;
                             background-color: hsl(209, 23%, 22%);
                             box-shadow: 0px 0px 15px -5px black;
                             border-radius: .3rem;
@@ -515,4 +519,68 @@ body{
             }
         }
     }
+}
+
+@media only screen and (max-width: 1320px){
+    .main{
+        .detail{
+            padding: 5vw;
+            .details{
+                .d_info{
+                    right: 5vw;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1280px){
+    .main{
+        .detail{
+            .details{
+                margin-top: 9vw;
+                .d_img{
+                    width: 43vw;
+                    height: 31vw;
+                }
+                .d_info{
+                    width: 40vw;
+                    margin-top: 2vw;
+                    h1{
+                        @include font(3vw,800, white);
+                    }
+                    .info_box{
+                        margin-top: 2vw;
+                        div{
+                            p{
+                                @include font(1.25vw,600, white);
+                                margin-bottom: 1vw;
+                                span{
+                                    @include font(1.15vw,300, white);
+                                }
+                            }
+                        }
+                    }
+                    .info_f{
+                        margin-top: 4vw;
+                        .i_border{
+                            width: 15vw;
+                            @include font(1.25vw,600, white);
+                        }
+                        .borders{
+                            margin-left: 1vw;
+                            p{
+                                @include font(.9vw,300, white);
+                                padding:.4vw 2.5vw;
+                                margin-right: .5vw;
+                                margin-bottom: .7vw;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 900px){
+    
 }

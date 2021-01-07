@@ -215,22 +215,3 @@ export let div = countriesDiv;
 export let sliderDot = sliderDotDiv;
 export let leftArrow = leftArrowSilder;
 export let rightArrow = rightArrowSilder;
-
-
-
-// name
-// nativeName
-// population
-// region
-// subregion
-// capital
-// borders[]
-// topLevelDomain[0]
-// currencies.name
-// languages[].name
-
-
-// name
-// Population
-// Region
-// Capital

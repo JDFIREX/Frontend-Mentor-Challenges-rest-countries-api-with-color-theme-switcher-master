@@ -6,6 +6,7 @@ const body = document.querySelector(".body");
 body.appendChild(Header.div);
 body.appendChild(Main.div);
 
+
 //npm install axios
 //npm install gsap
 //npm install node-sass

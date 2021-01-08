@@ -132,57 +132,28 @@ export function createCountryList(List){
 leftArrowSilder.innerHTML = `
 <img src="./../../images/angle-left-solid.svg" alt="left arrow" class="left_arrow_img" >
 `
-leftArrowSilder.addEventListener("click",(e) => leftPage(e))
-let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
-
-
-function leftPage(){
-    sliderPosition--;
-    sliderPosition < 0 ? sliderPosition = document.querySelector(".countries").childElementCount - 1 : sliderPosition = sliderPosition;
-
-    document.querySelector(".countries").childNodes.forEach(c => {
-        if(c.dataset.visible == "true"){
-            gs.to(c,.3,{
-                x : 600,
-                opacity: 0,
-            })
-            gs.to(c,0,{
-                delay: .1,
-                x: 0
-            })
-        }
-    })
-    setTimeout(() => {
-        document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-        document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
-        document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
-        document.querySelector(".countries").children[sliderPosition].style.opacity = "0"
-        document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
-        setTimeout(() => {
-            gs.to(document.querySelector(".countries").children[sliderPosition],0,{
-                x : -400,
-                opacity : 0,
-            }).to(document.querySelector(".countries").children[sliderPosition],.4,{
-                x : 0,
-                opacity: 1
-            })
-        }, 50);
-    }, 300);
-}
+leftArrowSilder.addEventListener("click",() => {
+    sliderPosition--
+    sliderPosition <= 0 ? sliderPosition = document.querySelector(".countries").childElementCount - 1 : sliderPosition = sliderPosition;
+    CountrySlider(sliderPosition,600,-400)})
 
 // right arrow
 rightArrowSilder.innerHTML = `
     <img src="./../../images/angle-right-solid.svg" alt="right arrow" class="right_arrow_img">
 `
-rightArrowSilder.addEventListener("click",(e) => rightPage(e))
-
-function rightPage(e){
-    sliderPosition++;
+rightArrowSilder.addEventListener("click",() => {
+    sliderPosition++
     sliderPosition >= document.querySelector(".countries").childElementCount ? sliderPosition = 0 : sliderPosition = sliderPosition;
+    CountrySlider(sliderPosition,-400,600)})
+
+
+let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
+
+function CountrySlider(sliderPosition,x1,x2){
     document.querySelector(".countries").childNodes.forEach(c => {
         if(c.dataset.visible == "true"){
             gs.to(c,.3,{
-                x : -400,
+                x : x1,
                 opacity: 0,
             })
             gs.to(c,0,{
@@ -199,7 +170,7 @@ function rightPage(e){
         document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
         setTimeout(() => {
             gs.to(document.querySelector(".countries").children[sliderPosition],0,{
-                x : 600,
+                x : x2,
                 opacity : 0,
             }).to(document.querySelector(".countries").children[sliderPosition],.4,{
                 x : 0,
@@ -208,10 +179,77 @@ function rightPage(e){
         }, 50);
     }, 300);
 }
-
 
 //  export 
 export let div = countriesDiv;
 export let sliderDot = sliderDotDiv;
 export let leftArrow = leftArrowSilder;
 export let rightArrow = rightArrowSilder;
+
+
+// function leftPage(){
+//     sliderPosition--;
+//     sliderPosition < 0 ? sliderPosition = document.querySelector(".countries").childElementCount - 1 : sliderPosition = sliderPosition;
+
+//     document.querySelector(".countries").childNodes.forEach(c => {
+//         if(c.dataset.visible == "true"){
+//             gs.to(c,.3,{
+//                 x : 600,
+//                 opacity: 0,
+//             })
+//             gs.to(c,0,{
+//                 delay: .1,
+//                 x: 0
+//             })
+//         }
+//     })
+//     setTimeout(() => {
+//         document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+//         document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+//         document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+//         document.querySelector(".countries").children[sliderPosition].style.opacity = "0"
+//         document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+//         setTimeout(() => {
+//             gs.to(document.querySelector(".countries").children[sliderPosition],0,{
+//                 x : -400,
+//                 opacity : 0,
+//             }).to(document.querySelector(".countries").children[sliderPosition],.4,{
+//                 x : 0,
+//                 opacity: 1
+//             })
+//         }, 50);
+//     }, 300);
+// }
+
+// function rightPage(e){
+//     sliderPosition++;
+//     sliderPosition >= document.querySelector(".countries").childElementCount ? sliderPosition = 0 : sliderPosition = sliderPosition;
+//     document.querySelector(".countries").childNodes.forEach(c => {
+//         if(c.dataset.visible == "true"){
+//             gs.to(c,.3,{
+//                 x : -400,
+//                 opacity: 0,
+//             })
+//             gs.to(c,0,{
+//                 delay: .1,
+//                 x: 0
+//             })
+//         }
+//     })
+//     setTimeout(() => {
+//         document.querySelector(".countries").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+//         document.querySelector(".sliderDot").childNodes.forEach(c => c.dataset.visible == "true" ? c.dataset.visible = "false" : null)
+//         document.querySelector(".sliderDot").children[sliderPosition].dataset.visible = "true";
+//         document.querySelector(".countries").children[sliderPosition].style.opacity = "0"
+//         document.querySelector(".countries").children[sliderPosition].dataset.visible = "true";
+//         setTimeout(() => {
+//             gs.to(document.querySelector(".countries").children[sliderPosition],0,{
+//                 x : 600,
+//                 opacity : 0,
+//             }).to(document.querySelector(".countries").children[sliderPosition],.4,{
+//                 x : 0,
+//                 opacity: 1
+//             })
+//         }, 50);
+//     }, 300);
+// }

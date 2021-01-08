@@ -1,14 +1,5 @@
 import * as Countries from "./countriesList.js"
 import gsap from "./../../node_modules/gsap/all.js"
-// import { gsap } from "gsap"
-
-// setTimeout(() => {
-//     let newList = Countries.countriesList.filter(c => {
-//         return c.region == "Europe"
-//     })
-//     Countries.createCountryList(newList)
-// }, 10000);
-
 
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");
@@ -127,13 +118,13 @@ function setFiltr(e){
             filters.push(document.querySelector(".filter_options").children[i].dataset.region)
         }
     }
-    if(filters.length == 0 || filters.length == 5){
+    if(filters.length <= 0 || filters.length >= 5){
         gs.to(".countries",.5,{
             clipPath : "inset(0 50% 0 50%)",
             opacity : 0
         })
         setTimeout(() => {
-            Countries.createCountryList(newList)
+            Countries.createCountryList(Countries.countriesList)
         }, 400);
         setTimeout(() => {
             gs.to('.countries',.3,{

@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -33,7 +32,6 @@
   background: transparent;
 }
 // sass
-
 @mixin position($p,$t,$l) {
     position: $p;
     top:$t;
@@ -51,11 +49,8 @@
     align-items: $a;
     justify-content: $j;
 }
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
-.atrribution_div{width: 100vw; position: absolute; bottom: 2vw; left : 10px; color: black;}
+.atrribution_div{width: 100vw; position: fixed; bottom: 2vw; left : 10px; color: black;z-index: 2000000000000000;}
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 *{
@@ -68,17 +63,16 @@ body{
     @include position(relative,0,0);
     max-width: 100vw;
     background-color: hsl(207, 26%, 17%);
-    height: auto;
+    min-height: 100vh;
+    height: 100%;
     font-size: 14px;
     overflow-x: hidden;
+    max-width: 1920px;
 }
-.design{
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    opacity: .6;
-    z-index: 2000000000000000000;
-    display: none;
+@media only screen and(min-width: 1920px){
+    body{
+        left: calc((100vw - 1920px) / 2)
+    }
 }
 // header
 .header{
@@ -88,7 +82,7 @@ body{
     @include display(flex,row,center,unset);
     padding: 0 5rem;
     background-color:hsl(209, 23%, 22%) ;
-    box-shadow: 0px 3px 10px -5px black;
+    box-shadow: 0px 3px 10px -8px black;
     z-index: 2000;
     h1{
         @include font(1.5rem,800 , hsl(0, 0%, 100%));
@@ -117,6 +111,9 @@ body{
 .main{
     @include position(relative,0,0);
     width: 100%;
+    min-height: 100vh;
+    max-width: 1920px;
+    height: 100%;
     padding: 3rem 0rem;
     background-color: hsl(207, 26%, 17%);
     .search{
@@ -152,16 +149,6 @@ body{
                     @include font(.9rem,600 , white);
                     color: white;
                     font-size: .9rem;
-                }
-            }
-        }
-        .search_box_white{
-            background-color: hsl(0, 0%, 100%);
-            box-shadow: 0px 0px 10px -5px black;
-            .search_input{
-                color : hsl(200, 15%, 8%);
-                &::placeholder{
-                    color: hsl(0, 0%, 52%);
                 }
             }
         }
@@ -226,7 +213,6 @@ body{
                 }
             }
         }
-        
     }
     .sliderDot{
         @include display(flex,unset,center,center);
@@ -268,17 +254,19 @@ body{
     }
     .countries{
         @include position(relative,0,0);
-        width: 100vw;
-
+        width: 100%;
+        max-width: 1920px !important;
         .country_page{
             @include position(relative,0,5rem);
-            width: calc(100vw - 10rem);
+            width: calc(100% - 10rem);
             display: grid;
+            max-width: 1920px !important;
             grid-row-gap: 4.6rem;
             grid-column-gap: 1.5rem;
             justify-content: space-between;
             grid-template-columns: repeat(4, 16.5rem);
             padding-bottom: .5rem;
+            // display: none;
             .country{
                 width: 16.5rem;
                 height: 21rem;
@@ -430,11 +418,12 @@ body{
 // details
 .main{
     .detail{
-        @include position(absolute,0,0);
+        @include position(absolute,0,200vw);
         @include display(flex,column,flex-start,flex-start);
         width: 100vw;
         height: 100%;
         z-index: 2000000000;
+        max-width: 1920px;
         background-color: hsl(207, 26%, 17%);
         padding: 5rem;
         .back{
@@ -452,10 +441,12 @@ body{
                 margin-left: -.5rem;
                 height: 1.5rem;
                 width: 1.5rem;
+                pointer-events: none;
             }
             p{
                 margin-left: .5rem;
                 @include font(1rem,600, white);
+                pointer-events: none;
             }
         }
         .details{
@@ -474,7 +465,6 @@ body{
             .d_info{
                 position: absolute;
                 right: 5rem;
-                border:1px solid red;
                 width: 36rem;
                 margin-left: 9rem;
                 margin-top: 2.5rem;
@@ -498,7 +488,7 @@ body{
                     margin-top: 4.5rem;
                     @include display(flex,row,flex-start,flex-start);
                     .i_border{
-                        width: 10rem;
+                        width: 11rem;
                         @include font(1rem,600, white);
                     }
                     .borders{
@@ -520,67 +510,144 @@ body{
         }
     }
 }
-
 @media only screen and (max-width: 1320px){
     .main{
-        .detail{
-            padding: 5vw;
+        .detail{padding: 5vw;
             .details{
-                .d_info{
-                    right: 5vw;
-                }
-            }
-        }
-    }
+                .d_info{right: 5vw;}}}}
 }
 @media only screen and (max-width: 1280px){
     .main{
         .detail{
-            .details{
-                margin-top: 9vw;
-                .d_img{
-                    width: 43vw;
-                    height: 31vw;
-                }
-                .d_info{
-                    width: 40vw;
-                    margin-top: 2vw;
-                    h1{
-                        @include font(3vw,800, white);
-                    }
-                    .info_box{
-                        margin-top: 2vw;
+            .back{height: 3.2vw;width: 12vw;
+                img{margin-left: -.5vw;height: 1.8vw;width: 4vw;}
+                p{margin-left: .5vw;@include font(1.25vw,600, white);}}
+            .details{margin-top: 9vw;
+                .d_img{width: 43vw;height: 31vw;}
+                .d_info{width: 40vw;margin-top: 2vw;
+                    h1{@include font(3vw,800, white);}
+                    .info_box{margin-top: 2vw;
                         div{
-                            p{
-                                @include font(1.25vw,600, white);
-                                margin-bottom: 1vw;
-                                span{
-                                    @include font(1.15vw,300, white);
-                                }
-                            }
-                        }
-                    }
-                    .info_f{
-                        margin-top: 4vw;
-                        .i_border{
-                            width: 15vw;
-                            @include font(1.25vw,600, white);
-                        }
-                        .borders{
-                            margin-left: 1vw;
-                            p{
-                                @include font(.9vw,300, white);
-                                padding:.4vw 2.5vw;
-                                margin-right: .5vw;
-                                margin-bottom: .7vw;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+                            p{@include font(1.25vw,600, white);margin-bottom: 1vw;
+                                span{@include font(1.15vw,300, white);}}}}
+                    .info_f{margin-top: 4vw;
+                        .i_border{width: 15vw;@include font(1.25vw,600, white);}
+                        .borders{margin-left: 1vw;
+                            p{@include font(.9vw,300, white);padding:.4vw 2.5vw;margin-right: .5vw;margin-bottom: .7vw;}}}}}}}
 }
 @media only screen and (max-width: 900px){
-    
+    .main{
+        .detail{
+            .back{height: 4.25vw;width: 15vw;
+                img{height: 2.5vw;width: 4.5vw;}
+                p{@include font(1.55vw,600, white);}}
+            .details{
+                .d_info{width: 44vw;margin-top: 0vw;
+                    h1{@include font(4vw,800, white);}
+                    .info_box{
+                        div{
+                            p{@include font(1.5vw,600, white);
+                                span{@include font(1.3vw,300, white);}}}}
+                    .info_f{
+                        .i_border{width: 23vw;@include font(1.5vw,600, white);}
+                        .borders{
+                            p{@include font(1.25vw,300, white);padding:.7vw 3.5vw;margin-right: .8vw;margin-bottom: .8vw;}}}}}}}
+}
+@media only screen and (max-width: 790px){
+    .main{
+        .detail{padding: 5vw;
+            .back{height: 2.8rem;width: 9rem;
+                img{margin-left: -.5rem;height: 1.5rem;width: 1.5rem;}
+                p{margin-left: .5rem;@include font(1rem,600, white);}}
+            .details{margin-top: 2rem;@include display(flex,column,center,flex-start);
+                .d_img{position: relative;width: 30rem;height: 20rem;}
+                .d_info{position: relative;left: 0;right: 0;width: 35rem;margin-left: 0rem;margin-top: 2.5rem;
+                    h1{width: 100%;text-align :center;@include font(2.5rem,800, white);}
+                    .info_box{margin-top: 1.7rem;
+                        div{
+                            p{@include font(1rem,600, white);margin-bottom: .6rem;
+                                span{@include font(1rem,300, white);}}}}
+                    .info_f{margin-top: 4.5rem;
+                        .i_border{width: 16rem;@include font(1rem,600, white);}
+                        .borders{margin-top: -.25rem;margin-left: 1rem;
+                            p{@include font(.8rem,300, white);padding:0.25rem 2rem;border-radius: .3rem;margin-right: .5rem;margin-bottom: .5rem;}}}}}}}
+}
+@media only screen and (max-width: 700px){
+    .main{height: auto;
+        .detail{
+            .back{padding: .5rem;}
+            .details{
+                .d_img{width: 80vw;height: 50vw;}
+                .d_info{width: 100%;
+                    .info_f{
+                        .i_border{width: 17rem;}}}}}}
+}
+@media only screen and (max-width: 530px){
+    .main{
+        .detail{
+            .details{
+                .d_img{width: 100%;height: 55vw;}
+                .d_info{
+                    .info_box{
+                        div{
+                            p{@include font(3.25vw,600, white);
+                                span{@include font(2.75vw,300, white);}}}}
+                    .info_f{
+                        .i_border{width: 50vw;@include font(3.25vw,600, white);}
+                        .borders{
+                            p{@include font(2.5vw,300, white);}}}}}}}
+}
+@media only screen and (max-width: 450px){
+    .main{
+        .detail{
+            .back{height: 10vw;width: 30vw;
+                img{margin-left: -1vw;height: 5vw;width: 10vw;}
+                p{margin-left: 0vw;@include font(3.25vw,600, white);}}
+            .details{
+                .d_info{
+                    h1{@include font(9vw,800, white);}
+                    .info_box{
+                        div{
+                            p{
+                                span{@include font(3vw,300, white);}}}}
+                    .info_f{
+                        .borders{margin-left: 1vw;
+                            p{@include font(3vw,300, white);padding:0.25rem 6vw;margin-right: 2vw;margin-bottom: 2.5vw }}}}}}}
+}
+.body_white{background-color: hsl(207, 26%, 17%);
+    .header{background-color:hsl(0, 0%, 100%);
+        h1{color: hsl(200, 15%, 8%);}
+        p{color: hsl(200, 15%, 8%);}}
+    .main{background-color: hsl(0, 0%, 98%);
+        .search{
+            .search_box{background-color: hsl(0, 0%, 100%);box-shadow: 0px 0px 10px -5px black;
+                .search_input{color : hsl(200, 15%, 8%);
+                    &::placeholder{color: hsl(0, 0%, 52%);}}}
+            .search_filter{background-color: hsl(0, 0%, 100%);
+                p{color : hsl(200, 15%, 8%);}}
+            .filter_options{background-color: hsl(0, 0%, 100%);
+                div{
+                    p{color : hsl(200, 15%, 8%);font-weight: 600;}}}}
+        .countries{
+            .country_page{
+                .country{background-color: hsl(0, 0%, 100%);
+                    .country_info{
+                        h1{color : hsl(200, 15%, 8%);}
+                        p{color : hsl(200, 15%, 8%);
+                            span{color : hsl(200, 15%, 8%);font-weight: 600;}}}}}}}
+    .main{background-color: hsl(0, 0%, 98%);
+        .detail{background-color: hsl(0, 0%, 98%);
+            .back{background-color:hsl(0, 0%, 100%);
+                p{color: hsl(200, 15%, 8%);}}
+            .details{
+                .d_info{
+                    h1{color: hsl(200, 15%, 8%);}
+                    .info_box{
+                        div{
+                            p{color: hsl(200, 15%, 8%);
+                                span{color: hsl(200, 15%, 8%);font-weight: 600;}}}}
+                    .info_f{
+                        .i_border{color: hsl(200, 15%, 8%);}
+                        .borders{
+                            p{color: hsl(200, 15%, 8%);background-color:hsl(0, 0%, 100%);font-weight: 600;}}}}}}}
 }

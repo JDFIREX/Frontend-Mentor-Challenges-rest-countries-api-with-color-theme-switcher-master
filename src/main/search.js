@@ -9,6 +9,7 @@ let inner = new Promise((resolve, reject) => {
     searchDiv.innerHTML = `
         <div class="search_box">
             <img src="./../../images/search-solid.svg" alt="search" class="search_img" >
+            <label id="search_label" style="visibility:hidden;" for="search_input"></label>
             <input type="text" class="search_input" name="search_input" id="search_input" placeholder="Search for a country..." >
         </div>
         <div class="search_filter" data-open="false">

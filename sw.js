@@ -54,11 +54,12 @@ self.addEventListener("fetch", (e) => {
                     return fetchRes;
                 })
             });
-        }).catch(() => {
-            if(e.request.url.indexOf('.html') > -1 || e.request.url.indexOf('.js') > -1){
-                return caches.match('/src/offline.html')
-            } 
-        })
+        }).catch(() => caches.match('/src/offline.html'))
+        // {
+        //     if(e.request.url.indexOf('.html') > -1 || e.request.url.indexOf('.js') > -1){
+        //         return 
+        //     } 
+        // })
     );
 });
 

@@ -1,5 +1,5 @@
-import * as Countries from "./countriesList.js"
-import gsap from "./../../node_modules/gsap/all.js"
+import * as Countries from "/src/main/countriesList.js"
+import gsap from "/node_modules/gsap/all.js"
 
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let searchDiv = document.createElement("div");

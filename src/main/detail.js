@@ -1,5 +1,7 @@
-import { countriesList } from "./countriesList.js"
-import gsap from "./../../node_modules/gsap/all.js"
+import { countriesList } from "/src/main/countriesList.js"
+import gsap from "/node_modules/gsap/all.js"
+
+
 let gs = gsap.timeline({defaults: {ease: "Power2.inOut"}});
 let detailDiv = document.createElement("div");
 detailDiv.classList.add("detail");

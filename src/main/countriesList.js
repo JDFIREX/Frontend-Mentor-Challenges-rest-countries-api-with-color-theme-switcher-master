@@ -18,8 +18,8 @@ export let countriesList = []
 let sliderPosition = 0;
 //  create list 
 fetch('https://restcountries.eu/rest/v2/all')
-.then(r => r.json())
-.then(function (response) {
+.then(result => result.json())
+.then((response) => {
     response.map((a,b) => {
         a.name == "Åland Islands" ? a.name = "Aland Islands" : a.name = a.name;
         let t = {

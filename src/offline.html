@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rest countries api with color theme switcher master</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .offline{
+            width: 100%;
+            font-size: 2rem;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body class="offline-body">
+    <div class="header">
+        <h1 class="header_h">Where in the world?</h1>
+        <img src="/images/moon.svg" alt="moon" class="moon">
+        <p class="dark">Dark Mode</p>
+    </div>
+    <div class="offline">
+        <h1>OOPS!!</h1>
+        <p>Currently you cannot view this page offline</p>
+    </div>
+    <div class ="atrribution_div">
+        <p class="attribution">
+          Challenge by <a rel="noopener" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+          Coded by <a rel="noopener" href="https://www.frontendmentor.io/profile/JDFIREX" target="_blank">Jonatan Dajtrowski</a>.
+        </p>
+    </div>
+
+    <script>
+        
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register("sw.js")
+            .then(registration => {
+                console.log("Registration successful, scope is :", registration.scope);
+            })
+            .catch(error => {
+                console.log("Service worker registration failed, error:", error);
+            });
+        };
+
+    </script>
+
+</body>
+</html>

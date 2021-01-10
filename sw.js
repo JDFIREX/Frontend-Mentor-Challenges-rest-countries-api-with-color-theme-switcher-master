@@ -27,6 +27,9 @@ const assets = [
     "/node_modules/gsap/ScrollToPlugin.js",
     "/node_modules/gsap/ScrollTrigger.js",
     "/node_modules/gsap/TextPlugin.js",
+    "/node_modules/gsap/utils/matrix.js",
+    "/node_modules/gsap/utils/paths.js",
+    "/node_modules/gsap/utils/strings.js",
     "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
 ];
 // cache size limit;

@@ -15,6 +15,7 @@ const assets = [
     "/images/icons/manifest-icon-512.png",
     "/images/icons/manifest-icon-192.png",
     "/images/favicon-32x32.png",
+    "/node_modules/gsap/all.js",
     "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
 ];
 // cache size limit;

@@ -46,7 +46,7 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
         // static fetch 
         caches.match(e.request).then(response => {
-            return response || fetch(e.request).then(fetchRes => {
+            response || fetch(e.request).then(fetchRes => {
                 // dynamic fetch 
                 return caches.open(dynamicCache).then(cache => {
                     cache.put(e.request.url, fetchRes.clone());

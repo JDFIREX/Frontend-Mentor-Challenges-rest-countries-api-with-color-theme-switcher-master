@@ -32,13 +32,15 @@ const assets = [
     "/node_modules/gsap/utils/strings.js",
     "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
 ];
+self.addEventListener("install", () => self.skipWaiting())
+self.addEventListener("activate",() => self.clients.claim())
+
 // cache size limit;
 const limitCacheSize = (name,size) => {
     caches.open(name).then(cache => {
         cache.keys().then(keys => {
             let imgs = keys.filter(a => a.url.includes("/data/")).map(a => keys.indexOf(a));
             if(keys.length > size && imgs.length > 0){
-                console.log(keys[imgs[0]])
                 cache.delete(keys[imgs[0]]).then(limitCacheSize(name,size));
             }
             else if(keys.length > size){
@@ -47,7 +49,6 @@ const limitCacheSize = (name,size) => {
         })
     })
 };
-
 
 self.addEventListener("install", (e) => {
     e.waitUntil(
@@ -69,12 +70,11 @@ self.addEventListener("fetch", (e) => {
                     return fetchRes;
                 })
             });
-        }).catch(() => caches.match('/src/offline.html'))
-        // {
-        //     if(e.request.url.indexOf('.html') > -1 || e.request.url.indexOf('.js') > -1){
-        //         return 
-        //     } 
-        // })
+        }).catch(() => {
+            if(e.request.url.indexOf('.html') > -1){
+                return caches.match('/src/offline.html');
+            } ;
+        })
     );
 });
 
@@ -87,9 +87,3 @@ self.addEventListener("activate", (e) => {
         })
     );
 });
-
-
-
-
-self.addEventListener('install', () => self.skipWaiting());
-self.addEventListener('activate', () => self.clients.claim());

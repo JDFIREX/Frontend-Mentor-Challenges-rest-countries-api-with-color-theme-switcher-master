@@ -82,6 +82,7 @@ body{
     @include display(flex,row,center,unset);
     padding: 0 5rem;
     background-color:hsl(209, 23%, 22%) ;
+    // background-color: red;
     box-shadow: 0px 3px 10px -8px black;
     z-index: 2000;
     h1{
